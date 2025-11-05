@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Admin Template</title>
+    <meta name="author" content="David Grzyb">
+    <meta name="description" content="">
+
+    <!-- Tailwind -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+        .font-family-karla { font-family: karla; }
+        .bg-sidebar { background: #3d68ff; }
+        .cta-btn { color: #3d68ff; }
+        .upgrade-btn { background: #1947ee; }
+        .upgrade-btn:hover { background: #0038fd; }
+        .active-nav-link { background: #1947ee; }
+        .nav-item:hover { background: #1947ee; }
+        .account-link:hover { background: #3d68ff; }
+        /* General form styling */
+        /* General form styling */
+       /* General form styling */
+ /* Container form để canh chỉnh */
+.form-container {
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 1%;
+    box-sizing: border-box; /* Đảm bảo chiều rộng container không bị ảnh hưởng bởi padding */
+    margin-bottom: 20px;
+}
+
+/* Canh chỉnh cho các label */
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block; /* Đảm bảo label chiếm toàn bộ chiều ngang */
+}
+
+/* Căn chỉnh input và select */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; /* Giữ kích thước cố định khi padding thay đổi */
+}
+
+/* Layout cho form hai cột */
+.form-container {
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Canh chỉnh nhóm nút hành động */
+.button-group {
+    margin-top: 20px;
+    text-align: right;
+}
+
+/* Nút Lưu */
+.btn-primary {
+    background-color: #0099cc;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #007a99;
+}
+
+/* Canh chỉnh kích thước chữ trên button */
+button {
+    font-size: 16px;
+}
+
+/* CSS cho nút "Sửa" */
+.custom-edit-btn {
+    background-color: #ffc107;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.custom-edit-btn:hover {
+    background-color: #e0a800;
+}
+
+/* CSS cho nút "Xóa" */
+.custom-delete-btn {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.custom-delete-btn:hover {
+    background-color: #c82333;
+}
+
+
+
+
+
+    </style>
+</head>
+<body class="bg-gray-100 font-family-karla flex">
+
+    <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
+        <div class="p-6">
+            <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+            <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                <i class="fas fa-plus mr-3"></i> New Report
+            </button>
+        </div>
+        <nav class="text-white text-base font-semibold pt-3">
+            <a href="index.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+                <i class="fas fa-tachometer-alt mr-3"></i>
+                Quản trị tài khoản
+            </a>
+            <a href="KhachHang.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-sticky-note mr-3"></i>
+                Quản trị khách hàng
+            </a>
+            <a href="blank.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-sticky-note mr-3"></i>
+                Quản trị ghế
+            </a>
+            <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-table mr-3"></i>
+                Quản trị phòng
+            </a>
+            <a href="forms.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-align-left mr-3"></i>
+                Quản trị dịch vụ    
+            </a>
+            <a href="tabs.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-tablet-alt mr-3"></i>
+                Quản trị phim
+            </a>
+            <a href="calendar.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-calendar mr-3"></i>
+                Quản trị lịch chiếu
+            </a>
+            <a href="calendar.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-calendar mr-3"></i>
+                Quản trị đặt vé
+            </a>
+            
+        </nav>
+        
+    </aside>
+
+    <div class="w-full flex flex-col h-screen overflow-y-hidden">
+        <!-- Desktop Header -->
+        <header class="w-full items-center bg-white py-2 px-6 hidden sm:flex">
+            <div class="w-1/2"></div>
+            <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
+                <button @click="isOpen = !isOpen" class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
+                    <img src="https://source.unsplash.com/uJ8LNVCBjFQ/400x400">
+                </button>
+                <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
+                <div x-show="isOpen" class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
+                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Profile</a>
+                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Sign Out</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Header & Nav -->
+        <header x-data="{ isOpen: false }" class="w-full bg-sidebar py-5 px-6 sm:hidden">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+                <button @click="isOpen = !isOpen" class="text-white text-3xl focus:outline-none">
+                    <i x-show="!isOpen" class="fas fa-bars"></i>
+                    <i x-show="isOpen" class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Dropdown Nav -->
+            <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
+                <a href="index.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-sticky-note mr-3"></i>
+                    Quản trị tài khoản
+                </a>
+                <a href="KhachHang.html" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
+                    <i class="fas fa-tachometer-alt mr-3"></i>
+                    Quản trị Khách hàng
+                </a>
+                <a href="blank.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-sticky-note mr-3"></i>
+                    Quản trị ghế
+                </a>
+                <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-table mr-3"></i>
+                    Quản trị phòng
+                </a>
+                <a href="forms.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-align-left mr-3"></i>
+                    Quản trị dịch vụ
+                </a>
+                <a href="tabs.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-tablet-alt mr-3"></i>
+                    Quản trị phim
+                </a>
+                <a href="calendar.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-calendar mr-3"></i>
+                    Quản trị lịch chiếu
+                </a>
+                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-cogs mr-3"></i>
+                    Quản trị đặt vé
+                </a>
+                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-user mr-3"></i>
+                    My Account
+                </a>
+                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                    <i class="fas fa-sign-out-alt mr-3"></i>
+                    Sign Out
+                </a>
+                
+            </nav>
+            <!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                <i class="fas fa-plus mr-3"></i> New Report
+            </button> -->
+        </header>
+    
+        <div class="w-full overflow-x-hidden border-t flex flex-col">
+            <main class="w-full flex-grow p-6">
+                <h1 class="text-3xl text-black pb-6">Quản trị khách hàng</h1>
+    
+                <div class="flex flex-wrap mt-6">
+                    <div class="w-full lg:12 pr-0 lg:pr-2">
+                        <p class="text-xl pb-3 flex items-center">
+                          <i class="fas fa-plus mr-3"></i> Thêm tài khoản khách hàng
+                        </p>
+                        <div class="p-6 bg-white">
+                          <!-- Form container -->
+                          <div class="form-container">
+                            <!-- Left column -->
+                            <div class="form-group">
+                              <label for="name">Họ và tên: </label>
+                              <input id="name" class="form-control" type="text" name="name">
+                            </div>
+                      
+                            <div class="form-group">
+                              <label for="username">Tên tài khoản: </label>
+                              <input id="username" class="form-control" type="text" name="username">
+                            </div>
+                      
+                            <div class="form-group">
+                              <label for="email">Email: </label>
+                              <input id="email" class="form-control" type="email" name="email">
+                            </div>
+                      
+                            <div class="form-group">
+                              <label for="password">Mật khẩu: </label>
+                              <input id="password" class="form-control" type="password" name="password">
+                            </div>
+                          </div>
+                      
+                          <!-- Right column -->
+                          <div class="form-container">
+                            <div class="form-group">
+                              <label for="role">Vai trò: </label>
+                              <select id="role" class="form-control" name="role">
+                                <option value="admin">Quản trị viên</option>
+                                <option value="employee">Nhân viên</option>
+                              </select>
+                            </div>
+                      
+                            <div class="form-group">
+                              <label for="gender">Giới tính: </label>
+                              <select id="gender" class="form-control" name="gender">
+                                <option value="male">Nam</option>
+                                <option value="female">Nữ</option>
+                              </select>
+                            </div>
+                      
+                            <div class="form-group">
+                              <label for="phone">Số điện thoại: </label>
+                              <input id="phone" class="form-control" type="tel" name="phone">
+                            </div>
+                      
+                            <div class="form-group">
+                              <label for="dob">Ngày sinh: </label>
+                              <input id="dob" class="form-control" type="date" name="dob">
+                            </div>
+                          </div>
+                      
+                          <!-- Button for saving (aligned to the right) -->
+                          <div class="button-group" style="text-align: right;">
+                            <button class="btn btn-primary">Lưu</button>
+                          </div>
+                        </div>
+                      </div>
+
+                </div>
+                <div class="w-full mt-12">
+                    <p class="text-xl pb-3 flex items-center">
+                        <i class="fas fa-list mr-3"></i> Danh sách tài khoản
+                    </p>
+                    <div class="bg-white overflow-auto">
+                        <table class="min-w-full bg-white">
+                          <thead class="bg-gray-800 text-white">
+                            <tr>
+                              <th class="w-1/5 text-left py-3 px-4 uppercase font-semibold text-sm">Mã ID</th>
+                              <th class="w-1/5 text-left py-3 px-4 uppercase font-semibold text-sm">Tài khoản</th>
+                              <th class="w-1/5 text-left py-3 px-4 uppercase font-semibold text-sm">Họ tên</th>
+                              <th class="w-1/5 text-left py-3 px-4 uppercase font-semibold text-sm">Vai trò</th>
+                              <th class="w-1/5 text-left py-3 px-4 uppercase font-semibold text-sm">Tác vụ</th>
+                            </tr>
+                          </thead>
+                          <tbody class="text-gray-700">
+                            <tr>
+                              <td class="w-1/4 text-left py-3 px-4">01</td>
+                              <td class="w-1/4 text-left py-3 px-4">Smith</td>
+                              <td class="w-1/4 text-left py-3 px-4">Sam Smith</td>
+                              <td class="w-1/4 text-left py-3 px-4">Admin</td>
+                              <td class="w-1/4 text-left py-3 px-4">
+                                <button type="button" class="btn btn-warning custom-edit-btn">Sửa</button>
+                                <button type="button" class="btn btn-danger custom-delete-btn">Xoá</button>
+                            </td>
+                            
+                            </tr>
+                            <tr class="bg-gray-200">
+                              <td class="w-1/4 text-left py-3 px-4">02</td>
+                              <td class="w-1/4 text-left py-3 px-4">Emma</td>
+                              <td class="w-1/4 text-left py-3 px-4">Emma Johnson</td>
+                              <td class="w-1/4 text-left py-3 px-4">User</td>
+                              <td class="w-1/4 text-left py-3 px-4">
+                                <button type="button" class="btn btn-warning custom-edit-btn">Sửa</button>
+                                <button type="button" class="btn btn-danger custom-delete-btn">Xoá</button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="w-1/4 text-left py-3 px-4">03</td>
+                              <td class="w-1/4 text-left py-3 px-4">Oliver</td>
+                              <td class="w-1/4 text-left py-3 px-4">Oliver Williams</td>
+                              <td class="w-1/4 text-left py-3 px-4">Editor</td>
+                              <td class="w-1/4 text-left py-3 px-4">
+                                <button type="button" class="btn btn-warning custom-edit-btn">Sửa</button>
+                                <button type="button" class="btn btn-danger custom-delete-btn">Xoá</button>
+                              </td>
+                            </tr>
+                            <tr class="bg-gray-200">
+                              <td class="w-1/4 text-left py-3 px-4">04</td>
+                              <td class="w-1/4 text-left py-3 px-4">Isabella</td>
+                              <td class="w-1/4 text-left py-3 px-4">Isabella Brown</td>
+                              <td class="w-1/4 text-left py-3 px-4">User</td>
+                              <td class="w-1/4 text-left py-3 px-4">
+                                <button type="button" class="btn btn-warning custom-edit-btn">Sửa</button>
+                                <button type="button" class="btn btn-danger custom-delete-btn">Xoá</button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="w-1/4 text-left py-3 px-4">05</td>
+                              <td class="w-1/4 text-left py-3 px-4">Lian</td>
+                              <td class="w-1/4 text-left py-3 px-4">Lian Smith</td>
+                              <td class="w-1/4 text-left py-3 px-4">Moderator</td>
+                              <td class="w-1/4 text-left py-3 px-4">
+                                <button type="button" class="btn btn-warning custom-edit-btn">Sửa</button>
+                                <button type="button" class="btn btn-danger custom-delete-btn">Xoá</button>
+                              </td>
+                            </tr>
+                            <tr class="bg-gray-200">
+                              <td class="w-1/4 text-left py-3 px-4">06</td>
+                              <td class="w-1/4 text-left py-3 px-4">Lily</td>
+                              <td class="w-1/4 text-left py-3 px-4">Lily Johnson</td>
+                              <td class="w-1/4 text-left py-3 px-4">Admin</td>
+                              <td class="w-1/4 text-left py-3 px-4">
+                                <button type="button" class="btn btn-warning custom-edit-btn">Sửa</button>
+                                <button type="button" class="btn btn-danger custom-delete-btn">Xoá</button>
+                              </td>
+                            </tr>
+                            <!-- Add more rows here if needed -->
+                          </tbody>
+                        </table>
+                      </div>
+                      
+                </div>
+            </main>
+    
+            
+        </div>
+        
+    </div>
+
+    <!-- AlpineJS -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <!-- ChartJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+    
+</body>
+</html>
